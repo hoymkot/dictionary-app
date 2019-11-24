@@ -15,14 +15,10 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class DictionaryHandler {
-
-
     @Autowired
     private DictionaryService dictionaryService;
-
     public Mono<ServerResponse> lookup(ServerRequest request){
         String word = request.pathVariable("word");
-
         return dictionaryService.getChineseMeaning(word)
                 .flatMap(
                         translation -> {
